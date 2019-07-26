@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import AllCharacters from './containers/AllCharacters';
+import './style.css';
+import NavBar from './components/NavBar';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+/* HOME PAGE */
+
+class App extends Component {
+
+  render() {
+    return (
+      <div>
+        {/* <div className="image-container">
+          <img className="image-style" src="https://challenging.events/wp-content/uploads/2017/03/superhero-pow-signs.jpeg"></img>
+        </div> */}
+        <NavBar />
+        {}
+
+        <div className="title">
+          Super POW!!
+        </div>
+        {/* Signup/Login Component*/}
+        {/* AllCharacters Component */}
+        {/*HOME */}
+      </div>
+    );
+  }
 }
 
 export default App;
