@@ -5,6 +5,11 @@ class CharacterCard extends Component {
     return (
       <div>
         Insert Character Card Here
+        <div className="character-card">
+          <img className="character-img" src="" alt="Character"/>
+          <h4><b>Character Name</b></h4>
+          <p>Character Bio</p>
+        </div>
       </div>
     );
   }
