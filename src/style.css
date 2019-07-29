@@ -36,9 +36,31 @@
 /*--------------*/
 
 .character-card{
-
+    border-style: solid;
+    margin: 20px;
+    height: 500px;
+    width: 400px;
+    
 }
 
 .character-img{
-    
+    border-style: solid;
+    margin-right: 20px;
+    float:right;
+}
+
+.character-name{
+    font-size: 20px;
+}
+
+.character-gender{
+    font-size: 20px;
+}
+
+.character-bio{
+    font-size: 10px;
+}
+
+.characterBtn{
+
 }
