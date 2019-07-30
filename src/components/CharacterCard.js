@@ -1,16 +1,31 @@
 import React, { Component } from 'react';
 
 class CharacterCard extends Component {
+
+  // const imageDefault = "https://previews.123rf.com/images/makstrv/makstrv1703/makstrv170300002/73192813-%E5%AF%BE%E3%81%AE%E6%89%8B%E7%B4%99%E3%80%82%E5%AF%BE%E3%83%AD%E3%82%B4-%E3%83%99%E3%82%AF%E3%83%88%E3%83%AB%E5%9B%B3.jpg"
+
+  checkGender = (gender) => {
+    let setGender = "Gender: "
+    if(gender === 0){
+      setGender += "Non-Binary"
+    } else if(gender === 1){
+      setGender += "Male"
+    } else if(gender === 2){
+      setGender += "Female"
+    }
+    return setGender
+  }
+
   render() {
     return (
       <div>
-        Insert Character Card Here
         <div className="character-card">
-          <img className="character-img" src="" alt="Character Image"/>
-          <h4 className="character-name"><b>Character Name</b></h4>
-          <p className="character-gender">Character Gender: </p>
-          <p className="character-bio">Character Bio: </p>
-          <button className="characterBtn">Click Me</button>
+          <img className="character-img" src={this.props.character.image.icon_url} alt={"No IMG"}/>
+          <button className="characterBtn">+</button>
+          <h4 className="character-name"><b>{this.props.character.name}</b></h4>
+          <p className="character-gender"> {this.checkGender(this.props.character.gender)}</p>
+          <p className="character-bio">Bio: {this.props.character.deck} </p>
+          
         </div>
       </div>
     );

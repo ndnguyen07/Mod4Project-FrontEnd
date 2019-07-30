@@ -15,7 +15,7 @@ const NavBar = () => {
             </ul>
 
 
-            <Route exact path="/"  component={Home} />
+            <Route exact path="/" component={Home}/>
             <Route path="/signup" component={SignUp} />
             <Route path="/yourteam" component={YourTeam} />
         </div>

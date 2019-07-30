@@ -29,9 +29,8 @@ class Home extends Component {
             </div> */}
         return(  
             <div className="title">
-            {/* <NavBar /> */}
-            Super POW!!
-            <AllCharacters />
+            Battle Verse POW!
+            <AllCharacters allCharactersResults={this.state.characters.results}/>
             
             </div>
         )

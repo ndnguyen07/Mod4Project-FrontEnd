@@ -38,15 +38,19 @@
 .character-card{
     border-style: solid;
     margin: 20px;
-    height: 500px;
-    width: 400px;
-    
+    height: 200px;
+    width: 300px;
+    box-shadow: 10 10 #000;
+    overflow-x: scroll;
 }
 
 .character-img{
     border-style: solid;
+    margin-top: 20px;
     margin-right: 20px;
     float:right;
+    width: 70px;
+    height: 70px;
 }
 
 .character-name{
@@ -62,5 +66,6 @@
 }
 
 .characterBtn{
-
+    float:left;
+    margin: 10px;
 }
