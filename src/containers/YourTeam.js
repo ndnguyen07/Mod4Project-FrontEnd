@@ -5,7 +5,7 @@ class YourTeam extends Component {
 
   displayYourTeam = () => {
     return this.props.yourTeam.map((character, index) =>  {
-        return <CharacterCard key={index} character={character} />
+        return <CharacterCard key={index} character={character} yourTeam={this.props.yourTeam} removeCharacter={this.props.removeCharacter}/>
     })
   }
   render() {

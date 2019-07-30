@@ -11,7 +11,7 @@ class Home extends Component {
         return(  
             <div className="title">
             Battle Verse POW!
-            <AllCharacters allCharactersResults={this.props.allCharactersResults} addCharacter={this.props.addCharacter}/>
+            <AllCharacters allCharactersResults={this.props.allCharactersResults} addCharacter={this.props.addCharacter} yourTeam={this.props.yourTeam}/>
             </div>
         )
             

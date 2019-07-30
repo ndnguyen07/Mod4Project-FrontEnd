@@ -9,7 +9,7 @@ class NavBar extends Component {
         super()
         this.state = {
             characters: [],
-            yourTeam: [],
+            yourTeam: []
         }
     }
 
@@ -28,7 +28,7 @@ class NavBar extends Component {
     }
 
     addCharacter = (selectedChar) => {
-        if (this.state.yourTeam.length < 10){
+        if (this.state.yourTeam.length < 10 && !this.state.yourTeam.includes(selectedChar)){
             this.setState({
                 yourTeam: [...this.state.yourTeam,selectedChar]
             })
@@ -38,12 +38,16 @@ class NavBar extends Component {
         }
     }
 
-    removeCharacter = () => {
-
+    removeCharacter = (selectedChar) => {
+        let newTeamArray = this.state.yourTeam.filter((character) => {
+            return character !== selectedChar
+        })
+        this.setState({
+            yourTeam: newTeamArray
+        })
     }
     render(){
 
-   
     return(
 
         <Fragment>
@@ -54,9 +58,9 @@ class NavBar extends Component {
             </ul>
 
 
-            <Route exact path="/" render={ (routerProps) => <Home {...routerProps} allCharactersResults={this.state.characters.results} addCharacter={this.addCharacter} /> } />
+            <Route exact path="/" render={ (routerProps) => <Home {...routerProps} allCharactersResults={this.state.characters.results} addCharacter={this.addCharacter} yourTeam={this.state.yourTeam}/> } />
             <Route path="/login" component={Login} />
-            <Route path="/yourteam" render={(routerProps) => <YourTeam {...routerProps} yourTeam={this.state.yourTeam} /> } />
+            <Route path="/yourteam" render={(routerProps) => <YourTeam {...routerProps} yourTeam={this.state.yourTeam} removeCharacter={this.removeCharacter} /> } />
         </Fragment>
 
     )
