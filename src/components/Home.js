@@ -8,7 +8,8 @@ class Home extends Component {
     constructor(){
         super()
         this.state = {
-            characters: []
+            characters: [],
+            yourTeam: []
         }
     }
 
@@ -20,6 +21,14 @@ class Home extends Component {
                 characters: json
             })
         })
+    }
+
+    addCharacter = () => {
+
+    }
+
+    removeCharacter = () => {
+
     }
 
 
