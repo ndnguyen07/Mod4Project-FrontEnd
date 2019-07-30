@@ -12,9 +12,6 @@ class App extends Component {
     return (
       <div>
         <NavBar />
-
-        {/* Signup/Login Component*/}
-        {/* AllCharacters Component */}
       </div>
     );
   }

@@ -4,6 +4,10 @@ class CharacterCard extends Component {
 
   // const imageDefault = "https://previews.123rf.com/images/makstrv/makstrv1703/makstrv170300002/73192813-%E5%AF%BE%E3%81%AE%E6%89%8B%E7%B4%99%E3%80%82%E5%AF%BE%E3%83%AD%E3%82%B4-%E3%83%99%E3%82%AF%E3%83%88%E3%83%AB%E5%9B%B3.jpg"
 
+  handleClick = (character) => {
+    this.props.addCharacter(character)
+  }
+
   checkGender = (gender) => {
     let setGender = "Gender: "
     if(gender === 0){
@@ -21,7 +25,7 @@ class CharacterCard extends Component {
       <div>
         <div className="character-card">
           <img className="character-img" src={this.props.character.image.icon_url} alt={"No IMG"}/>
-          <button className="characterBtn">+</button>
+          <button className="characterBtn" onClick={() => this.handleClick(this.props.character)}>+</button>
           <h4 className="character-name"><b>{this.props.character.name}</b></h4>
           <p className="character-gender"> {this.checkGender(this.props.character.gender)}</p>
           <p className="character-bio">Bio: {this.props.character.deck} </p>

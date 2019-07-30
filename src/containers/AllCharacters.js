@@ -7,7 +7,7 @@ class AllCharacters extends Component {
     displayAllCharacters = () => {
         if(this.props.allCharactersResults !== undefined){
             return this.props.allCharactersResults.map((character, index) =>  {
-                return <CharacterCard key={index} character={character} />
+                return <CharacterCard key={index} character={character} addCharacter={this.props.addCharacter}/>
             })
         }
     }
