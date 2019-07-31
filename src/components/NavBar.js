@@ -9,7 +9,10 @@ class NavBar extends Component {
         super()
         this.state = {
             characters: [],
-            yourTeam: []
+            yourTeam: [],
+            teamName: "My Team",
+            formName: "My Team"    
+  
         }
     }
 
@@ -24,6 +27,20 @@ class NavBar extends Component {
             this.setState({
                 characters: json
             })
+        })
+    }
+
+    handleTeamNameInput = (event) => {
+        event.persist()
+        this.setState({
+            [event.target.name]: event.target.value //formName: formInput
+          })
+    }   
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        this.setState({
+            teamName: this.state.formName   //teamName: value of formName state
         })
     }
 
@@ -60,7 +77,7 @@ class NavBar extends Component {
 
             <Route exact path="/" render={ (routerProps) => <Home {...routerProps} allCharactersResults={this.state.characters.results} addCharacter={this.addCharacter} yourTeam={this.state.yourTeam}/> } />
             <Route path="/login" component={Login} />
-            <Route path="/yourteam" render={(routerProps) => <YourTeam {...routerProps} yourTeam={this.state.yourTeam} removeCharacter={this.removeCharacter} /> } />
+            <Route path="/yourteam" render={(routerProps) => <YourTeam {...routerProps} yourTeam={this.state.yourTeam} removeCharacter={this.removeCharacter} teamName={this.state.teamName} formName={this.state.formName} handleTeamNameInput={this.handleTeamNameInput} handleSubmit={this.handleSubmit}/>} />
         </Fragment>
 
     )

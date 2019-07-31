@@ -88,3 +88,13 @@ body {
 .edit-btn{
     font-size: 15px;
 }
+
+.hidden {
+    display: none;
+}
+
+.show {
+    display: flex;
+    vertical-align: top;
+    align-items: center;
+}
