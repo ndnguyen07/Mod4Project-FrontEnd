@@ -6,9 +6,10 @@ class Login extends Component {
         return(
             <div>
                 <h1>Login Page</h1>
-                <form>
-                    <label>Username:<input type='text' name= 'username'></input></label>
-                    <label>Password:<input type='password' name= 'password'></input></label>
+                <form onSubmit={this.props.loginUser}>
+                    <label>Username:<input type='text' name= 'signInName' onChange={this.props.handleSignIn}></input></label>
+                    <label>Password:<input type='password' name= 'signInPass' onChange={this.props.handleSignIn}></input></label>
+                    <input type="submit" value='login'/>
                 </form>
             </div>
         )

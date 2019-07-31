@@ -6,9 +6,10 @@ class SignUp extends Component {
         return(
             <div>
                 <h1>Sign Up Page</h1>
-                <form>
-                    <label>Create Username:<input type='text' name= 'username'></input></label>
-                    <label>Create Password:<input type='password' name= 'password'></input></label>
+                <form onSubmit={this.props.createUser}>
+                    <label>Create Username:<input type='text' name= 'signUpName' onChange={this.props.handleSignUp}></input></label>
+                    <label>Create Password:<input type='password' name= 'signUpPass' onChange={this.props.handleSignUp}></input></label>
+                    <input type="submit" value='sign up'/>
                 </form>
             </div>
         )
