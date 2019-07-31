@@ -13,7 +13,6 @@ class YourTeam extends Component {
   }
 
   handleClick = () => {
-    console.log("editing Mah Team Name")
     if(this.state.class === "hidden"){
       this.setState({
         class: "show"

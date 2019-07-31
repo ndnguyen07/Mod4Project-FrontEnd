@@ -39,6 +39,12 @@ body {
 /*Character Card*/
 /*--------------*/
 
+.new-char-img {
+    height: 40px;
+    width: 40px;
+    float: right;
+}
+
 .character-card{
     border-style: solid;
     margin: 20px;
