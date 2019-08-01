@@ -49,6 +49,23 @@ class NavBar extends Component {
             this.setState({
                 yourTeam: [...this.state.yourTeam,selectedChar]
             })
+            fetch('http://localhost:3000/teams', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accepts': 'application/json',
+                    'Authorization': `Bearer ${localStorage['token']}`
+                },
+                body: JSON.stringify({
+                    team: {
+                        user_id: localStorage['user'],
+                        name: selectedChar.name,
+                        bio: selectedChar.deck,
+                        gender: selectedChar.gender,
+                        image: selectedChar.image.icon_url
+                    }
+                })
+            })
         }
         else {
             console.log("stop adding char")
