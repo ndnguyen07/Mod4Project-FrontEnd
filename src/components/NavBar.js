@@ -9,16 +9,34 @@ class NavBar extends Component {
         super()
         this.state = {
             characters: [],
+            createdCharacters: [],
             yourTeam: [],
             teamName: "My Team",
-            formName: "My Team"    
-  
+            formName: "My Team",
+
+            newCharacterForm: {
+                name: "Name",
+                gender: "Gender",
+                bio: "Bio",
+                image: "Image URL"
+            },
+            newCharacter: {
+                name: "New Name",
+                gender: "New Gender",
+                bio: "New Bio",
+                image: "Image"
+            }
         }
     }
 
     componentDidMount(){
         this.fetchCharacters()
     }
+
+      logout = () => {
+    localStorage.removeItem("token");
+    this.setState({ auth: { user: {} } });
+  };
 
     fetchCharacters = () => {
         fetch('http://localhost:3000/characters')
@@ -30,13 +48,16 @@ class NavBar extends Component {
         })
     }
 
+    //Handle Team Name Input
     handleTeamNameInput = (event) => {
         event.persist()
+        console.log([event.target.name])
         this.setState({
             [event.target.name]: event.target.value //formName: formInput
           })
     }   
 
+    //Handle Team Name Submit
     handleSubmit = (event) => {
         event.preventDefault();
         this.setState({
@@ -44,6 +65,7 @@ class NavBar extends Component {
         })
     }
 
+    //Add Character to Team
     addCharacter = (selectedChar) => {
         if (this.state.yourTeam.length < 10 && !this.state.yourTeam.includes(selectedChar)){
             this.setState({
@@ -67,11 +89,9 @@ class NavBar extends Component {
                 })
             })
         }
-        else {
-            console.log("stop adding char")
-        }
     }
 
+    //Remove Character from Team
     removeCharacter = (selectedChar) => {
         let newTeamArray = this.state.yourTeam.filter((character) => {
             return character !== selectedChar
@@ -80,6 +100,30 @@ class NavBar extends Component {
             yourTeam: newTeamArray
         })
     }
+
+    newCharacterOnChange = (event) => {
+        event.persist();
+        this.setState({
+            newCharacterForm: {
+                ...this.state.newCharacterForm,
+                [event.target.name]: event.target.value
+            }
+        })
+    }
+
+    submitNewCharacter = (event) => {
+        event.preventDefault();
+        this.setState({
+            createdCharacters: [...this.state.createdCharacters, this.state.newCharacterForm]
+        })
+    }
+
+    logout = () => {
+        localStorage.removeItem('user');
+        localStorage.removeItem('token');
+ 
+      };
+
     render(){
 
     return(
@@ -87,19 +131,20 @@ class NavBar extends Component {
         <Fragment>
             <ul className="navbar">
                 <li><Link to='/' className="nav-link" >Home</Link></li>
-                <li><Link to='/login' className="nav-link" >Signup/Login</Link></li>
                 <li><Link to='/yourteam' className="nav-link" >Your Team</Link></li>
+                <li><Link to='/login' className="nav-link" >Signup/Login</Link></li>
+                <li onClick={this.logout}> <Link to='/' className="nav-link">Logout</Link></li>
             </ul>
 
-
-            <Route exact path="/" render={ (routerProps) => <Home {...routerProps} allCharactersResults={this.state.characters.results} addCharacter={this.addCharacter} yourTeam={this.state.yourTeam}/> } />
-            <Route path="/login" component={Login} />
+            {/* Home Page Route*/}
+            <Route exact path="/" render={ (routerProps) => <Home {...routerProps} allCharactersResults={this.state.characters.results} addCharacter={this.addCharacter} yourTeam={this.state.yourTeam} submitNewCharacter={this.submitNewCharacter} newCharacterOnChange={this.newCharacterOnChange} newCharacterForm={this.state.newCharacterForm} createdCharacters={this.state.createdCharacters} /> } />
+            {/* Login Route*/}
+            <Route path="/login" render={(routerProps) => <Login/>}/>
+            {/* Your Team Route*/}
             <Route path="/yourteam" render={(routerProps) => <YourTeam {...routerProps} yourTeam={this.state.yourTeam} removeCharacter={this.removeCharacter} teamName={this.state.teamName} formName={this.state.formName} handleTeamNameInput={this.handleTeamNameInput} handleSubmit={this.handleSubmit}/>} />
         </Fragment>
 
     )
-    
 }}
-
 
 export default NavBar;

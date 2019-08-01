@@ -9,11 +9,11 @@ class SignUp extends Component {
 
     render(){
         return(
-            <div>
-                <h1>Sign Up Page</h1>
+            <div className="sign-up-container">
+                <h1>Sign Up</h1>
                 <h3>{this.props.username}</h3>
                 <form onSubmit={this.props.createUser}>
-                    <label>Create Username:<input type='text' name= 'signUpName' onChange={this.props.handleSignUp}></input></label>
+                    <label>Create Username:<input type='text' name= 'signUpName' onChange={this.props.handleSignUp}></input></label><br></br>
                     <label>Create Password:<input type='password' name= 'signUpPass' onChange={this.props.handleSignUp}></input></label>
                     <input type="submit" value='sign up'/>
                 </form>

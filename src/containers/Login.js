@@ -73,23 +73,7 @@ class Login extends Component {
         })
     }
 
-    getProfile = () => {
-        let token = this.getToken()
-        fetch('http://localhost:3000/api/v1/profile', {
-          headers: {
-            'Authorization': 'Bearer ' + token
-          }
-        })
-        .then(res=>res.json())
-        .then(json=> {
-          this.setState({user: json.user})
-          this.props.onLogin(json.user);
-          // localStorage.setItem("user_id", json.user.id)
-        })
-      }
-  
-
-    
+ 
     
     render(){
         return(

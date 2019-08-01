@@ -84,6 +84,20 @@ body {
 }
 
 /*--------------*/
+/*  Login Page  */
+/*--------------*/
+
+.sign-up-container {
+    float: right;
+    padding-right: 400px;
+}
+
+.sign-in-container {
+    float: left;
+    padding-left: 400px;
+}
+
+/*--------------*/
 /*  Your Team   */
 /*--------------*/
 

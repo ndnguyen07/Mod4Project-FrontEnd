@@ -8,18 +8,18 @@ class AllCharacters extends Component {
     constructor(){
         super()
         this.state = ({
-            createdCharactersArray: [],
-            class: "hidden",
-            newCharacterForm:{
-                name: "New Name",
-                gender: "New Gender",
-                bio: "New Bio"
-            },
-            newCharacter:{
-                name: "New Name",
-                gender: "New Gender",
-                bio: "New Bio"
-            }
+            // createdCharactersArray: [],
+            class: "hidden"
+            // newCharacterForm:{
+            //     name: "New Name",
+            //     gender: "New Gender",
+            //     bio: "New Bio"
+            // },
+            // newCharacter:{
+            //     name: "New Name",
+            //     gender: "New Gender",
+            //     bio: "New Bio"
+            // }
         })
     }
 
@@ -31,12 +31,7 @@ class AllCharacters extends Component {
         }
     }
 
-    createCharacterForm = () => {
-
-    }
-
     handleClick = () => {
-        console.log("new Character")
         if(this.state.class === "hidden"){
           this.setState({
             class: "show"
@@ -49,17 +44,14 @@ class AllCharacters extends Component {
       }
 
     handleOnChange = (event) => {
-        event.persist()
-        this.setState({
-            [event.target.name]: event.target.value
-        })
+        console.log(event.target.value)
+        this.props.newCharacterOnChange(event)
     }
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.setState({
-            [event.target.name]: event.target.newCharacterForm.value
-        })
+        this.props.submitNewCharacter(event)
+
     }
 
     render(){
@@ -67,9 +59,10 @@ class AllCharacters extends Component {
             <div>
                 <button><img className="new-char-img" src={newCharImg} onClick={this.handleClick} /></button>
                 <form className={this.state.class}>
-                    <input name="name" type="text" value={this.state.newCharacterForm.name} onChange={this.handleOnChange} ></input>
-                    <input name="gender" type="text" value={this.state.newCharacterForm.gender} onChange={this.handleOnChange}></input>
-                    <input name="bio" type="text" value={this.state.newCharacterForm.bio} onChange={this.handleOnChange}></input>
+                    <input name="name" type="text" value={this.props.newCharacterForm.name} onChange={this.handleOnChange} ></input>
+                    <input name="gender" type="text" value={this.props.newCharacterForm.gender} onChange={this.handleOnChange}></input>
+                    <input name="bio" type="text" value={this.props.newCharacterForm.bio} onChange={this.handleOnChange}></input>
+                    <input name="image" type="text" value={this.props.newCharacterForm.image} onChange={this.handleOnChange}></input>
                     <input type="submit" value="Create Character"/>
                 </form>
                 {this.displayAllCharacters()}

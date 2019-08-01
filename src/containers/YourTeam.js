@@ -12,6 +12,8 @@ class YourTeam extends Component {
     })
   }
 
+ 
+
   handleClick = () => {
     if(this.state.class === "hidden"){
       this.setState({
